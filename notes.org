@@ -1,0 +1,164 @@
+
+* Algorithms
+** Fundamentals
+*** Linked Lists
+  - linked list: recursive data structure that is either empty (null)
+    and a reference to a node having a generic item and a reference to
+    a linked list
+  - Each node is an abstract entity that holds some data
+**** Node record
+  - Object-Oriented programming makes linked lists easy to implement
+  - Example:
+#+BEGIN_SRC python
+  class Node:
+      data
+      nextItem
+
+  first = Node()
+  second = Node()
+  third = Node()
+  first.data = "to"
+  second.data = "be"
+  third.data = "or"
+  first.next = second
+  second.next = third
+#+END_SRC
+
+#+RESULTS:
+  - Linked list represents a sequence of items
+  - Could also use an array to represent the data
+#+BEGIN_SRC python
+  a = ['to', 'be', 'or']
+
+#+END_SRC
+
+#+RESULTS:
+: None
+  - Difference between the linked-list vs array
+    - linked list is easier to insert a value in the middle
+    - Array is easier to append a value at the end
+  - link: node reference
+**** Insert at the beginning
+  - Easiest to insert a new netry at the beginning of a linked list
+**** Remove from the beginning
+  - Removing a node from the beginning is easier
+    - assign first value to first.next
+**** Insert at the end
+  - To add an item at the end, the linked list must be traversed
+  - Can't add an additional link to structure
+    - It would add alot of processor time to keep it accurate
+**** Insert/remove at other positions
+  - Common to use doubly-linked lists to facillitate adding a node in the middle
+**** Traversal
+  - To examine every item in an array we can use a loop
+  - to examine every item in a linked list:
+    - set a temporary value x to the first node
+    - traverse by setting x to the next node until null is found
+    - Called traversing the list
+**** Stack Implementation
+***** pushdown stack linked-list implementation   
+  - API
+| name    | description                         |
+|---------+-------------------------------------|
+| push    | add item from top of stack          |
+| pop     | remove item fro mtop of stack       |
+| size    | return the number of elements       |
+| isEmpty | return True if size == 0 else false |
+
+#+BEGIN_SRC python :results output
+  class Node:
+      pass
+
+  class Stack:
+      def __init__(self):
+          self.topNode = Node()
+          self.nodeNum = 0
+      def pop(self):
+          retNode = self.topNode
+          self.topNode = self.topNode.nextItem
+          self.nodeNum -= 1
+          return(retNode)
+      def push(self, item):
+          oldTopNode = self.topNode
+          self.topNode = Node()
+          self.topNode.data = item
+          self.topNode.nextItem = oldTopNode
+          self.nodeNum += 1
+          pass
+      def isEmpty(self):
+          return(True if nodeNume == 0 else False)
+      def size(self):
+          return(nodeNum)
+
+  myStack = Stack()
+  myStack.push("hello")
+  print(myStack.pop().data)
+#+END_SRC
+
+#+RESULTS:
+: hello
+**** Queue Implementation
+***** FIFO Queue Linked-List
+  - API
+| name    | description                         |
+| dequeue | remove the oldest item              |
+| enqueue | add an item to the stack            |
+| size    | return the size of the stack        |
+| isEmpty | return true if size == 0 else false |
+
+#+BEGIN_SRC python :results output
+  class Node:
+      pass
+
+  class Queue:
+      self.first = Node()
+      self.last = Node()
+      self.numItems = 0
+
+      def enqueue(self, item):
+          pass
+      def dequeue(self):
+          pass
+      def size(self):
+          return(self.numItems)
+      def isEmpty(self):
+          return(True is self.size() == 0 else False)
+#+END_SRC
+
+
+** 1.5 Case Study: Union-Find
+  - basic approach to developing and analyzing algorithms
+    - use the union-find examle
+  - Emphasize the following themes:
+    - Good algorithms distinguish solvable or not
+    - Understanding the performance characteristics can be interesting
+    - The scientific method is an important tool
+    - iterative refinement can increase algorithm efficiency
+  - The Union-Find problem is not just a toy problem
+  - starting with a simple solution, then seek to improve
+*** Dynamic connectivity
+  - problem specification:
+    - The input is a sequence of pairs of integers
+    - each integer represents an object of some type
+    - interpret the pair p q ad "p is connected to q"
+    - p q has the following properties
+      - Reflexive: p is ocnnected to p
+      - symmetric: If p is connected to q, then q is connected to p
+      - transitive: if p is connected to q and q is connected to r, then
+	p is connected to r
+    - an equivalence relation partitions the objects into equivalent classes
+    - Goal:
+      - filter out extraneous paits (pairs where both objects are in the same 
+        equivalence class) from the sequence
+    - this is the dynamic connectivity problem
+**** Networks
+  - The integers might represent computers in a network
+  - The question may be:
+    - do we need a new direct connection for q and q
+**** Variable name equivalence
+  - In certain programming environments, it is possible to declare two variable names
+  - After a sequence of such declerations, the system needs to be able to determine 
+    whether two given names are equivalent.
+  - Early application the motivated algorithms
+**** Mathematical sets
+  - 
